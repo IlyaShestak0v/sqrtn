@@ -167,15 +167,18 @@ int main(){
     
     //массив для проверки отсутствия в числе символов,
     //не являющимися цифрами
-    vector<string> nums {"0","1","2","3","4","5","6","7","8","9"}; 
+    vector<char> nums {0,1,2,3,4,5,6,7,8,9}; 
 
-    for(int i = 0; i <= big_number.length(); i++){
-        for(string num : nums){
-            if(big_number.substr(i, 1) != num){
-                 cout << "Ошибка! В числе встречаются символы, не являющиеся цифрами!";
-                 return 0;
-            }
+    for (char ch : nums) {
+        if (!isdigit(ch)) {
+            cout << "Ошибка! В числе встречаются символы, не являющиеся цифрами!";
+            return 0;
         }
+    }
+
+    if(big_number.length() < 40){
+        cout << "Ошибка! Введите число больше 40 разрядов!";
+        return 0;
     }
 
     bool even = big_number.size()%2 == 0; //Проверка на четность числа
